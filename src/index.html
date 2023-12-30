@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="keywords" content="">
+        <meta name="author" content="Shreya Shah">
+        <meta name="description" content="">
+
+        <title>Video popup</title>
+
+        <!-- Link Swiper's CSS -->
+        <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" /> -->
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="./scss/styles.scss">
+    </head>
+    <body>
+        <!-- Start: Fixed Video Bubble -->
+        <section class="fixed-video-bubble">
+            <div class="video-bubble__wrapper">
+                <div class="video-bubble__wrapper-box" data-bs-toggle="modal" data-bs-target="#videoModal">
+                    <div class="video-bubble__wrapper-video">
+                        <!-- Poster will be the image which will be seen when video won't work -->
+                        <video poster="https://storage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerBlazes.jpg" autoplay loop muted playsinline>
+                            <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4" playsinline>
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End: Fixed Video Bubble -->
+
+        <!-- Modal -->
+        <div class="modal fade video-bubble__modal" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="video-player">
+                            <video poster="https://storage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerBlazes.jpg" class="video" autoplay muted playsinline>
+                                <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4" playsinline>
+                            </video>
+
+                            <div class="video-progress">
+                                <div class="video-progress__filled"></div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="swiper mySwiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">Slide 1</div>
+                                <div class="swiper-slide">Slide 2</div>
+                                <div class="swiper-slide">Slide 3</div>
+                                <div class="swiper-slide">Slide 4</div>
+                                <div class="swiper-slide">Slide 5</div>
+                                <div class="swiper-slide">Slide 6</div>
+                                <div class="swiper-slide">Slide 7</div>
+                                <div class="swiper-slide">Slide 8</div>
+                                <div class="swiper-slide">Slide 9</div>
+                            </div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-pagination"></div>
+                            <div class="autoplay-progress">
+                                <svg viewBox="0 0 48 48">
+                                    <circle cx="24" cy="24" r="20"></circle>
+                                </svg>
+                                <span></span>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="module" src="./js/main.js"></script>
+        <!-- Swiper JS -->
+        <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
+    </body>
+</html>

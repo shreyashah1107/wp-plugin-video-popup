@@ -1,0 +1,54 @@
+.video-bubble__modal {
+    .modal-dialog {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        height: 95vh;
+        margin: 0 auto;
+        padding: 0;
+        max-width: 350px;
+    }
+
+    .modal-header {
+        position: relative;
+        padding: 0;
+        border: 0;
+
+        .btn-close {
+            position: absolute;
+            top: 30px;
+            right: 18px;
+            color: rgba($white, .8);
+            background-color: #eee;
+            opacity: 1;
+            border-radius: 0;
+            box-shadow: none;
+            outline: none;
+            z-index: 1;
+        }
+    }
+
+    .modal-content {
+        max-width: 100%;
+        min-width: 350px;
+        aspect-ratio: 608 / 1080;
+        overflow: hidden;
+        border: 0;
+    }
+
+    .modal-body {
+        padding: 0;
+
+        .video-player {
+            position: relative;
+            height: 100%;
+        }
+
+        video {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            user-select: none;
+        }
+    }
+}
