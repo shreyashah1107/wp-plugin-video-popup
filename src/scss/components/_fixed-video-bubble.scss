@@ -27,3 +27,10 @@
         }
     }
 }
+
+// Hide when modal is opened
+.modal-open {
+    .fixed-video-bubble {
+        display: none;
+    }
+}

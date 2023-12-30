@@ -1,12 +1,11 @@
 .video-bubble__modal {
     .modal-dialog {
         display: flex;
-        justify-content: center;
         flex-direction: column;
-        height: 95vh;
+        justify-content: center;
+        height: 100vh;
         margin: 0 auto;
-        padding: 0;
-        max-width: 350px;
+        padding: 30px 0;
     }
 
     .modal-header {
@@ -24,7 +23,7 @@
             border-radius: 0;
             box-shadow: none;
             outline: none;
-            z-index: 1;
+            z-index: 2;
         }
     }
 
@@ -49,6 +48,19 @@
             width: 100%;
             object-fit: cover;
             user-select: none;
+        }
+    }
+}
+
+// < 576px
+@include media-breakpoint-down(sm) {
+    .video-bubble__modal {
+        .modal-dialog {
+            padding: 30px 15px;
+        }
+
+        .modal-content {
+            min-width: auto;
         }
     }
 }

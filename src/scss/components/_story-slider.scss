@@ -1,0 +1,81 @@
+.story {
+    &__slider {
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background: linear-gradient(180deg, rgba(0,0,0,.4) 0%, rgba(0,0,0,0) 100%);
+            z-index: 2;
+        }
+    }
+
+    &__slide {
+        height: initial;
+
+        video,
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    &__pagination {
+        bottom: unset !important;
+        top: 8px !important;
+        display: flex;
+        padding: 0 4px;
+
+        .swiper-pagination-bullet {
+            flex-grow: 1;
+            border-radius: 100vh;
+            height: 3px;
+            margin: 0 2px !important;
+            background-color: rgba($color: #f7f7f5, $alpha: .4);
+            opacity: 1;
+            
+            .swiper-pagination-progress {
+                height: 100%;
+                width: 0%;
+                border-radius: 100vh;
+                background-color: #f7f7f5;
+            }
+        }
+    }
+
+    &__prev,
+    &__next {
+        top: 0;
+        height: 100%;
+        width: 50%;
+        margin-top: 0;
+        // top: 50%;
+        // transform: translateY(-50%);
+        // margin: 0;
+        // color: $black;
+        // width: 30px;
+        // height: 30px;
+        // border-radius: 50%;
+        // background-color: $white;
+        // box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+        &::after {
+            // font-size: 16px;
+            content: none;
+        }
+    }
+
+    &__prev {
+        left: 0;
+    }
+
+    &__next {
+        right: 0;
+    }
+}

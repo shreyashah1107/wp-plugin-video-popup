@@ -9,10 +9,10 @@
 
         <title>Video popup</title>
 
-        <!-- Link Swiper's CSS -->
-        <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" /> -->
+        <!-- Swiper CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-        <!-- CSS -->
+        <!-- Bootstrap & Custom CSS -->
         <link rel="stylesheet" href="./scss/styles.scss">
     </head>
     <body>
@@ -31,7 +31,7 @@
         </section>
         <!-- End: Fixed Video Bubble -->
 
-        <!-- Modal -->
+        <!-- Story Slider Modal -->
         <div class="modal fade video-bubble__modal" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -39,45 +39,50 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="video-player">
-                            <video poster="https://storage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerBlazes.jpg" class="video" autoplay muted playsinline>
-                                <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4" playsinline>
-                            </video>
+                         <div class="story">	 
+                            <div class="story__slider swiper">
+                                <div class="story__wrapper swiper-wrapper">
+                                    <!-- Slide 1 -->
+                                    <div class="story__slide swiper-slide">
+                                        <img src="https://picsum.photos/450/800" />
+                                    </div>
 
-                            <div class="video-progress">
-                                <div class="video-progress__filled"></div>
+                                    <!-- Slide 2 -->
+                                    <div class="story__slide swiper-slide">
+                                        <video poster="https://storage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerBlazes.jpg" autoplay muted>
+                                            <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+
+                                    <!-- Slide 3 -->
+                                    <div class="story__slide swiper-slide">
+                                        <img src="https://picsum.photos/450/810" />
+                                    </div>
+                                </div>
+                                
+                                <!-- Navigation Arrows -->
+                                <div class="story__next swiper-button-next"></div>
+                                <div class="story__prev swiper-button-prev"></div>
+
+                                <!-- Progress pagination -->
+                                <div class="story__pagination swiper-pagination"></div>
                             </div>
                         </div>
-
-                        <!-- <div class="swiper mySwiper">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">Slide 1</div>
-                                <div class="swiper-slide">Slide 2</div>
-                                <div class="swiper-slide">Slide 3</div>
-                                <div class="swiper-slide">Slide 4</div>
-                                <div class="swiper-slide">Slide 5</div>
-                                <div class="swiper-slide">Slide 6</div>
-                                <div class="swiper-slide">Slide 7</div>
-                                <div class="swiper-slide">Slide 8</div>
-                                <div class="swiper-slide">Slide 9</div>
-                            </div>
-                            <div class="swiper-button-next"></div>
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-pagination"></div>
-                            <div class="autoplay-progress">
-                                <svg viewBox="0 0 48 48">
-                                    <circle cx="24" cy="24" r="20"></circle>
-                                </svg>
-                                <span></span>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- Boostrap & Custom JS -->
         <script type="module" src="./js/main.js"></script>
+
         <!-- Swiper JS -->
-        <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+        <!-- Jquery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+        <!-- GSAP -->
+        <script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
     </body>
 </html>

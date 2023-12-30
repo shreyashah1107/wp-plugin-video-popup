@@ -8,20 +8,19 @@ html {
     box-sizing: inherit;
 }
 
+// .video-progress {
+//     position: absolute;
+//     top: 10px;
+//     left: 10px;
+//     right: 10px;
+//     display: flex;
+//     height: 2px;
+//     transition: 500ms cubic-bezier(0.6, 0.01, 0.1, 0.96);
+//     background: rgba($white, 0.6);
+//     cursor: pointer;
 
-.video-progress {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    right: 10px;
-    display: flex;
-    height: 2px;
-    transition: 500ms cubic-bezier(0.6, 0.01, 0.1, 0.96);
-    background: rgba($white, 0.6);
-    cursor: pointer;
-
-    &__filled {
-        width: 0;
-        background-color: $white;
-    }
-}
+//     &__filled {
+//         width: 0;
+//         background-color: $white;
+//     }
+// }

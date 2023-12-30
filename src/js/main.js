@@ -1,48 +1,71 @@
-// Import our custom CSS
-// import "../scss/styles.scss";
-
 // Import all of Bootstrap's JS
 import * as bootstrap from "bootstrap";
 
-const videoPlayer = document.querySelector(".video-player");
-const video = videoPlayer.querySelector(".video");
-const progress = videoPlayer.querySelector(".video-progress");
-const progressBar = videoPlayer.querySelector(".video-progress__filled");
-
-//Progress bar
-video.addEventListener("timeupdate", () => {
-	const percentage = (video.currentTime / video.duration) * 100;
-	progressBar.style.width = `${percentage}%`;
+// Set video duration
+const videos = document.querySelectorAll(".story__slide video");
+videos.forEach((video) => {
+	$(video)
+		.parent(".story__slide")
+		.attr("data-swiper-autoplay", video.duration * 1000);
 });
 
-//change progress bar on click
-progress.addEventListener("click", (e) => {
-	const progressTime = (e.offsetX / progress.offsetWidth) * video.duration;
-	video.currentTime = progressTime;
+const slider = new Swiper(".story__slider", {
+	speed: 1,
+	watchSlidesProgress: true,
+	slidesPerView: 1,
+	autoplay: {
+		delay: 5000,
+		disableOnInteraction: false,
+		stopOnLastSlide: true,
+	},
+	navigation: {
+		nextEl: ".story__next",
+		prevEl: ".story__prev",
+	},
+	pagination: {
+		el: ".story__pagination",
+		renderBullet: function (index, className) {
+			return '<div class="' + className + '"><div class="swiper-pagination-progress"></div> </div>';
+		},
+	},
+	on: {
+		autoplayTimeLeft(swiper, time, progress) {
+			let currentSlide = document.querySelectorAll(".story__slider .swiper-slide")[swiper.activeIndex];
+			let currentBullet = document.querySelectorAll(".story__slider .swiper-pagination-progress")[
+				swiper.realIndex
+			];
+			let fullTime = currentSlide.dataset.swiperAutoplay
+				? parseInt(currentSlide.dataset.swiperAutoplay)
+				: swiper.params.autoplay.delay;
+
+			let percentage =
+				Math.min(Math.max(parseFloat((((fullTime - time) * 100) / fullTime).toFixed(1)), 0), 100) + "%";
+
+			gsap.set(currentBullet, { width: percentage });
+		},
+		transitionEnd(swiper) {
+			let allBullets = $(".story__slider .swiper-pagination-progress");
+			let bulletsBefore = allBullets.slice(0, swiper.realIndex);
+			let bulletsAfter = allBullets.slice(swiper.realIndex, allBullets.length);
+			if (bulletsBefore.length) {
+				gsap.set(bulletsBefore, { width: "100%" });
+			}
+			if (bulletsAfter.length) {
+				gsap.set(bulletsAfter, { width: "0%" });
+			}
+
+			let activeSlide = document.querySelectorAll(".story__slider .swiper-slide")[swiper.realIndex];
+			if (activeSlide.querySelector("video")) {
+				activeSlide.querySelector("video").currentTime = 0;
+			}
+		},
+	},
 });
 
-// const progressCircle = document.querySelector(".autoplay-progress svg");
-// const progressContent = document.querySelector(".autoplay-progress span");
-// var swiper = new Swiper(".mySwiper", {
-// 	spaceBetween: 30,
-// 	slidesPerView: 2,
-// 	centeredSlides: true,
-// 	autoplay: {
-// 		delay: 2500,
-// 		disableOnInteraction: false,
-// 	},
-// 	pagination: {
-// 		el: ".swiper-pagination",
-// 		clickable: true,
-// 	},
-// 	navigation: {
-// 		nextEl: ".swiper-button-next",
-// 		prevEl: ".swiper-button-prev",
-// 	},
-// 	on: {
-// 		autoplayTimeLeft(s, time, progress) {
-// 			progressCircle.style.setProperty("--progress", 1 - progress);
-// 			progressContent.textContent = `${Math.ceil(time / 1000)}s`;
-// 		},
-// 	},
-// });
+// Slide to 1st slide when modal hide
+$("#videoModal").on("hide.bs.modal", function (e) {
+	slider.update();
+	var $invoker = $(e.relatedTarget);
+	slider.slideTo($invoker.data("slider"));
+	slider.update();
+});
