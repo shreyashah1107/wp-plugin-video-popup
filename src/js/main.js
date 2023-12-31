@@ -65,7 +65,18 @@ $("#videoModal").on("show.bs.modal", function (e) {
 			},
 		},
 	});
+
+	setTimeout(function () {
+		$("#userComment").focus();
+	}, 300);
+
+	// slider.update();
 });
+
+// $("#videoModal").on("shown.bs.modal", function (e) {
+// $("#userComment").focus();
+// $(document).off("focusin.modal");
+// });
 
 // Slide to 1st slide when modal hide
 $("#videoModal").on("hide.bs.modal", function (e) {
