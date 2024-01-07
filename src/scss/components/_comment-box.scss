@@ -2,8 +2,6 @@
     position: fixed;
     bottom: 30px;
     left: 30px;
-    opacity: 0;
-    visibility: hidden;
     transition: 500ms cubic-bezier(0.6, 0.01, 0.1, 0.96);
     z-index: 1056;
 
@@ -25,10 +23,10 @@
             display: flex;
             gap: 10px;
             // align-items: center;
-            background-color: rgba(6, 6, 6, 0.35);
+            // background-color: rgba(6, 6, 6, 0.35);
             color: $white;
             border-radius: 5px;
-            padding: 5px 10px;
+            padding: 5px;
 
             &-avatar {
                 margin-top: 2px;
@@ -115,11 +113,19 @@
     }
 }
 
-// Show when modal is opened
-.modal-open {
+// < 1200px
+@include media-breakpoint-down(lg) {
     .comments {
-        opacity: 1;
-        visibility: visible;
+        &__wrapper {
+            &-item {
+                background: #353535;
+            }
+            &-input {
+                input {
+                    background: #353535;
+                }
+            }
+        }
     }
 }
 
@@ -128,7 +134,7 @@
     .comments {
         left: 10px;
         right: 10px;
-        
+
         &__wrapper {
             width: 100%;
         }

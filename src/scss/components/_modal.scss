@@ -23,7 +23,12 @@
             border-radius: 0;
             box-shadow: none;
             outline: none;
+            transition: .3s ease-in;
             z-index: 2;
+
+            &:hover {
+                opacity: .7;
+            }
         }
     }
 
