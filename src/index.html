@@ -9,11 +9,27 @@
 
         <title>Video popup</title>
 
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
         <!-- Swiper CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
         <!-- Bootstrap & Custom CSS -->
         <link rel="stylesheet" href="./scss/styles.scss">
+
+        <style>
+            :root {
+                --theme-primary: #AC87C5;
+                --comment-input-bg: rgba(6, 6, 6, 0.35);
+                --input-color: #FFFFFF;
+                --font-color: #212529;
+                --white: #FFFFFF;
+                --white-50: rgba(255, 255, 255, .5);
+                --white-80: rgba(255, 255, 255, .8);
+                --cubic-transition: 500ms cubic-bezier(0.6, 0.01, 0.1, 0.96);
+            }
+        </style>
     </head>
     <body>
         <!-- Start: Fixed Video Bubble -->
@@ -84,11 +100,13 @@
                         <input type="text" tabindex="1" name="userComment" id="userComment" placeholder="Type your message...">
 
                         <div class="mention-link">
-                            <span>@</span>
+                            <i class="fa-solid fa-at"></i>
+                            <!-- <span>@</span> -->
                         </div>
 
                         <div class="enter-link">
-                            <svg width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="12" fill="#000"></circle><path d="M22.848 26.8v-7.552L25.6 22a.849.849 0 001.2-1.2l-4.2-4.2a.849.849 0 00-1.2 0l-4.2 4.2a.849.849 0 001.2 1.2l2.752-2.752V26.8a.848.848 0 101.696 0z" fill="#fff"></path></svg>
+                            <i class="fa-solid fa-arrow-up"></i>
+                            <!-- <svg width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="12" fill="#000"></circle><path d="M22.848 26.8v-7.552L25.6 22a.849.849 0 001.2-1.2l-4.2-4.2a.849.849 0 00-1.2 0l-4.2 4.2a.849.849 0 001.2 1.2l2.752-2.752V26.8a.848.848 0 101.696 0z" fill="#fff"></path></svg> -->
                         </div>
                     </div>
                 </div>
@@ -146,13 +164,13 @@
                         <div>
                             <div class="back-link__wrapper">
                                 <div class="back-link">
-                                    <img src="https://www.svgrepo.com/show/438644/left.svg" alt="Left Arrow">
+                                    <i class="fa-solid fa-angle-left"></i>
                                 </div>
                             </div>
                             <div class="title">Storefront</div>
                             <div class="search-wrapper">
                                 <div class="search-icon">
-                                    <img src="https://www.svgrepo.com/show/532555/search.svg" alt="Search Icon">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
                                 </div>
                             </div>
                         </div>
@@ -409,7 +427,7 @@
                         <div class="products__single-header">
                             <div class="back-link__wrapper">
                                 <div class="back-link">
-                                    <img src="https://www.svgrepo.com/show/438644/left.svg" alt="Left Arrow">
+                                    <i class="fa-solid fa-angle-left"></i>
                                     <!-- <svg width="24" height="24" fill="black" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M15.216 6.121L13.095 4l-7.779 7.778.002.002-.318.318 8.095 8.094 2.121-2.12-5.975-5.976 5.975-5.975z"></path></svg> -->
                                 </div>
                             </div>
@@ -463,17 +481,19 @@
                     </div>
                     
                     <div class="products__single-footer">
-                        <a href="#" class="btn-buy" title="Buy" disabled>Buy</a>
+                        <a href="#" class="btn-buy" title="Buy">Buy</a>
                     </div>
                 </div>
             </div>
             <!-- Product Single -->
 
             <!-- Start: Slider -->
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
                     </div>
                     <div class="modal-body">
                         <div class="story">
@@ -511,10 +531,10 @@
                         <div class="cta cta--left">
                             <div class="btn-wrapper">
                                 <a href="#" title="Like">
-                                    <img src="https://www.svgrepo.com/show/414395/like.svg" alt="Like">
+                                    <i class="fa-regular fa-heart"></i>
                                 </a>
                                 <a href="#" title="Share">
-                                    <img src="https://www.svgrepo.com/show/506628/whatsapp.svg" alt="Share on whatsapp">
+                                    <i class="fa-brands fa-whatsapp"></i>
                                 </a>
                             </div>
                         </div>
@@ -523,10 +543,10 @@
                         <div class="cta cta--bottom">
                             <div class="btn-wrapper">
                                 <a href="#" title="Like">
-                                    <img src="https://www.svgrepo.com/show/414395/like.svg" alt="Like">
+                                    <i class="fa-regular fa-heart"></i>
                                 </a>
                                 <a href="#" title="Share">
-                                    <img src="https://www.svgrepo.com/show/506628/whatsapp.svg" alt="Share on whatsapp">
+                                    <i class="fa-brands fa-whatsapp"></i>
                                 </a>
                             </div>
                         </div>
@@ -535,10 +555,10 @@
                         <div class="cta cta--right">
                             <div class="btn-wrapper">
                                 <a href="#" title="Like">
-                                    <img src="https://www.svgrepo.com/show/414395/like.svg" alt="Like">
+                                    <i class="fa-regular fa-heart"></i>
                                 </a>
                                 <a href="#" title="Share">
-                                    <img src="https://www.svgrepo.com/show/506628/whatsapp.svg" alt="Share on whatsapp">
+                                    <i class="fa-brands fa-whatsapp"></i>
                                 </a>
                             </div>
                         </div>

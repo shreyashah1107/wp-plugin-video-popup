@@ -2,7 +2,7 @@
     position: fixed;
     bottom: 30px;
     left: 30px;
-    transition: 500ms cubic-bezier(0.6, 0.01, 0.1, 0.96);
+    transition: var(--cubic-transition);
     z-index: 1056;
 
     &__wrapper {
@@ -14,26 +14,24 @@
         }
 
         &-items {
-            padding: 10px;
             display: grid;
             gap: 5px;
+            padding: 10px;
         }
 
         &-item {
             display: flex;
             gap: 10px;
-            // align-items: center;
-            // background-color: rgba(6, 6, 6, 0.35);
-            color: $white;
+            color: var(--white);
             border-radius: 5px;
             padding: 5px;
 
             &-avatar {
-                margin-top: 2px;
                 flex: 0 0 30px;
                 width: 30px;
                 max-width: 30px;
                 height: 30px;
+                margin-top: 2px;
                 border-radius: 50%;
                 overflow: hidden;
 
@@ -59,23 +57,23 @@
         }
 
         &-input {
-            margin: 15px 10px 0;
             position: relative;
+            margin: 15px 10px 0;
 
             input {
+                padding: 5px 70px 5px 10px;
+                font-size: 12px;
                 width: 100%;
-                box-shadow: none;
-                color: $white;
-                background-color: rgba(6, 6, 6, 0.35);
+                height: 40px;
+                color: var(--input-color);
+                background-color: var(--comment-input-bg);
                 border-radius: 5px;
+                box-shadow: none;
                 outline: none;
                 border: none;
-                padding: 5px 70px 5px 10px;
-                height: 40px;
-                font-size: 12px;
 
                 &::-webkit-input-placeholder {
-                    color: rgba($white, .5);
+                    color: var(--white-50);
                 }
             }
 
@@ -84,25 +82,25 @@
                 position: absolute;                
                 top: 50%;
                 transform: translateY(-50%);
-            }
-
-            .mention-link {
-                right: 40px;               
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 width: 24px;
                 height: 24px;
                 font-size: 12px;
-                background-color: $black;
-                color: $white;
+                background-color: var(--theme-primary);
+                color: var(--input-color);
                 border-radius: 50%;
                 cursor: pointer;
                 z-index: 2;
             }
 
+            .mention-link {
+                right: 40px;
+            }
+
             .enter-link {
-                right: 0;
+                right: 10px;
                 z-index: 1;
 
                 circle {
