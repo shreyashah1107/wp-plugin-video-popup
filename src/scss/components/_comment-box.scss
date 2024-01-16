@@ -112,20 +112,20 @@
 }
 
 // < 1200px
-@include media-breakpoint-down(lg) {
-    .comments {
-        &__wrapper {
-            &-item {
-                background: #353535;
-            }
-            &-input {
-                input {
-                    background: #353535;
-                }
-            }
-        }
-    }
-}
+// @include media-breakpoint-down(lg) {
+//     .comments {
+//         &__wrapper {
+//             &-item {
+//                 background: #353535;
+//             }
+//             &-input {
+//                 input {
+//                     background: #353535;
+//                 }
+//             }
+//         }
+//     }
+// }
 
 // < 576px
 @include media-breakpoint-down(sm) {
@@ -134,7 +134,24 @@
         right: 10px;
 
         &__wrapper {
-            width: 100%;
+            width: calc(100% - 100px);
+
+            &-items {
+                padding: 0;
+            }
+
+            &-item {
+                padding: 0;
+                background: transparent;
+            }
+            
+            &-input {
+                margin-left: 0;
+
+                input {
+                    background: rgba(6, 6, 6, 0.55);
+                }
+            }
         }
     }
 }

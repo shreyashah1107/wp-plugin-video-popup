@@ -133,11 +133,13 @@
 @include media-breakpoint-down(sm) {
     .video-bubble__modal {
         .modal-dialog {
-            padding: 30px 15px;
+            padding: 0;
         }
 
         .modal-content {
+            height: 100%;
             min-width: auto;
+            border-radius: 0;
         }
     }
 }

@@ -626,6 +626,13 @@
                 grid-template-columns: repeat(3, 1fr);
             }
         }
+        &__wrapper {
+            &-box,
+            &-stacked {
+                width: 90px;
+                height: 90px;
+            }
+        }
     }
 }
 
