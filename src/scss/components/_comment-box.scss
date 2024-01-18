@@ -111,22 +111,6 @@
     }
 }
 
-// < 1200px
-// @include media-breakpoint-down(lg) {
-//     .comments {
-//         &__wrapper {
-//             &-item {
-//                 background: #353535;
-//             }
-//             &-input {
-//                 input {
-//                     background: #353535;
-//                 }
-//             }
-//         }
-//     }
-// }
-
 // < 576px
 @include media-breakpoint-down(sm) {
     .comments {
