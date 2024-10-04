@@ -2,232 +2,295 @@
 import * as bootstrap from "bootstrap";
 
 $(document).ready(function () {
-	var slider = document.getElementsByClassName(".story__slider");
+  var slider = document.getElementsByClassName("story__slider");
 
-	// When modal shows
-	$("#videoModal").on("show.bs.modal", function (e) {
-		// Set video duration
-		const videos = document.querySelectorAll(".story__slide video");
-		videos.forEach((video) => {
-			$(video)
-				.parent(".story__slide")
-				.attr("data-swiper-autoplay", video.duration * 1000);
-		});
+  var lastVideoTime = 0;
+  var lastSlideIndex = 0;
 
-		slider = new Swiper(".story__slider", {
-			speed: 1,
-			watchSlidesProgress: true,
-			slidesPerView: 1,
-			autoplay: {
-				delay: 5000,
-				disableOnInteraction: false,
-				stopOnLastSlide: true,
-			},
-			navigation: {
-				nextEl: ".story__next",
-				prevEl: ".story__prev",
-			},
-			pagination: {
-				el: ".story__pagination",
-				renderBullet: function (index, className) {
-					return '<div class="' + className + '"><div class="swiper-pagination-progress"></div> </div>';
-				},
-			},
-			on: {
-				autoplayTimeLeft(swiper, time, progress) {
-					let currentSlide = document.querySelectorAll(".story__slider .swiper-slide")[swiper.activeIndex];
-					let currentBullet = document.querySelectorAll(".story__slider .swiper-pagination-progress")[
-						swiper.realIndex
-					];
-					let fullTime = currentSlide.dataset.swiperAutoplay
-						? parseInt(currentSlide.dataset.swiperAutoplay)
-						: swiper.params.autoplay.delay;
+  // When modal shows
+  $("#videoModal").on("show.bs.modal", function (e) {
+    // Set video duration
+    const videos = document.querySelectorAll(".story__slide video");
+    videos.forEach((video) => {
+      $(video)
+        .parent(".story__slide")
+        .attr("data-swiper-autoplay", video.duration * 1000);
+    });
 
-					let percentage =
-						Math.min(Math.max(parseFloat((((fullTime - time) * 100) / fullTime).toFixed(1)), 0), 100) + "%";
+    slider = new Swiper(".story__slider", {
+      speed: 1,
+      watchSlidesProgress: true,
+      slidesPerView: 1,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+        stopOnLastSlide: true,
+      },
+      navigation: {
+        nextEl: ".story__next",
+        prevEl: ".story__prev",
+      },
+      pagination: {
+        el: ".story__pagination",
+        renderBullet: function (index, className) {
+          return '<div class="' + className + '"><div class="swiper-pagination-progress"></div> </div>';
+        },
+      },
+      on: {
+        autoplayTimeLeft(swiper, time, progress) {
+          let currentSlide = document.querySelectorAll(".story__slider .swiper-slide")[swiper.activeIndex];
+          let currentBullet = document.querySelectorAll(".story__slider .swiper-pagination-progress")[swiper.realIndex];
+          let fullTime = currentSlide.dataset.swiperAutoplay
+            ? parseInt(currentSlide.dataset.swiperAutoplay)
+            : swiper.params.autoplay.delay;
 
-					gsap.set(currentBullet, { width: percentage });
-				},
-				transitionEnd(swiper) {
-					let allBullets = $(".story__slider .swiper-pagination-progress");
-					let bulletsBefore = allBullets.slice(0, swiper.realIndex);
-					let bulletsAfter = allBullets.slice(swiper.realIndex, allBullets.length);
-					if (bulletsBefore.length) {
-						gsap.set(bulletsBefore, { width: "100%" });
-					}
-					if (bulletsAfter.length) {
-						gsap.set(bulletsAfter, { width: "0%" });
-					}
+          let percentage =
+            Math.min(Math.max(parseFloat((((fullTime - time) * 100) / fullTime).toFixed(1)), 0), 100) + "%";
 
-					let activeSlide = document.querySelectorAll(".story__slider .swiper-slide")[swiper.realIndex];
-					if (activeSlide.querySelector("video")) {
-						activeSlide.querySelector("video").currentTime = 0;
-					}
-				},
-			},
-		});
+          gsap.set(currentBullet, { width: percentage });
+        },
+        transitionEnd(swiper) {
+          let allBullets = $(".story__slider .swiper-pagination-progress");
+          let bulletsBefore = allBullets.slice(0, swiper.realIndex);
+          let bulletsAfter = allBullets.slice(swiper.realIndex, allBullets.length);
+          if (bulletsBefore.length) {
+            gsap.set(bulletsBefore, { width: "100%" });
+          }
+          if (bulletsAfter.length) {
+            gsap.set(bulletsAfter, { width: "0%" });
+          }
 
-		// setTimeout(function () {
-		// 	$("#userComment").focus();
-		// }, 300);
+          let activeSlide = document.querySelectorAll(".story__slider .swiper-slide")[swiper.realIndex];
+          if (activeSlide.querySelector("video")) {
+            activeSlide.querySelector("video").currentTime = 0;
+          }
+        },
+      },
+    });
 
-		slider.init();
-	});
+    // setTimeout(function () {
+    // 	$("#userComment").focus();
+    // }, 300);
 
-	$("#videoModal").on("hidden.bs.modal", function (e) {
-		// slider.update();
-		// var $invoker = $(e.relatedTarget);
-		// slider.slideTo($invoker.data("slider"));
-		// slider.update();
-		slider.destroy();
-		$("#userComment").val("");
-	});
+    slider.init();
+  });
 
-	function openProductLandingPopup() {
-		$(".products__landing-wrapper").addClass("active");
-		$(".products").addClass("hide");
-	}
+  $("#videoModal").on("hidden.bs.modal", function (e) {
+    // slider.update();
+    // var $invoker = $(e.relatedTarget);
+    // slider.slideTo($invoker.data("slider"));
+    // slider.update();
 
-	function closeProductLandingPopup() {
-		$(".products__landing-wrapper").removeClass("active");
-		$(".products").removeClass("hide");
-		$(".search-input").val("");
-		closeSearchBar();
-	}
+    if (slider) {
+      slider.destroy();
+    }
+    $("#userComment").val("");
+    $(".story__modal").removeClass("full-height-popup");
+    $(".story__prev").removeClass("active-popup");
+    $(".story__next").removeClass("active-popup");
+    closeStoryPopup();
+  });
 
-	function openProductLandingSinglePopup() {
-		$(".products__single-wrapper").addClass("active");
-	}
+  function openProductLandingPopup() {
+    $(".products__landing-wrapper").addClass("active");
+    $(".products").addClass("hide");
+  }
 
-	function closeProductLandingSinglePopup() {
-		$(".products__single-wrapper").removeClass("active");
-	}
+  function closeProductLandingPopup() {
+    $(".products__landing-wrapper").removeClass("active");
+    $(".products").removeClass("hide");
+    $(".search-input").val("");
+    closeSearchBar();
+  }
 
-	function openProductSinglePopup() {
-		$(".products__single-wrapper").addClass("active");
-		$(".products").addClass("hide");
-	}
+  function openProductLandingSinglePopup() {
+    $(".products__single-wrapper").addClass("active");
+  }
 
-	function closeProductSinglePopup() {
-		$(".products__single-wrapper").removeClass("active");
-		$(".products").removeClass("hide");
-	}
+  function closeProductLandingSinglePopup() {
+    $(".products__single-wrapper").removeClass("active");
+  }
 
-	function openSearchBar() {
-		$(".search__bar-wrapper").addClass("active");
-		$(".search-icon").addClass("hide");
-	}
+  function openProductSinglePopup() {
+    $(".products__single-wrapper").addClass("active");
+    $(".products").addClass("hide");
+  }
 
-	function closeSearchBar() {
-		$(".search__bar-wrapper").removeClass("active");
-		$(".search-icon").removeClass("hide");
-	}
+  function closeProductSinglePopup() {
+    $(".products__single-wrapper").removeClass("active");
+    $(".products").removeClass("hide");
+  }
 
-	// Open All Product popup
-	$(".link-all-products").click(function () {
-		openProductLandingPopup();
-	});
+  function openSearchBar() {
+    $(".search__bar-wrapper").addClass("active");
+    $(".search-icon").addClass("hide");
+  }
 
-	// Close All Product popup
-	$(".products__landing .back-link").click(function () {
-		closeProductLandingPopup();
-	});
+  function closeSearchBar() {
+    $(".search__bar-wrapper").removeClass("active");
+    $(".search-icon").removeClass("hide");
+  }
 
-	// Open Single Product popup from landing popup
-	$(".open-landing-product").click(function () {
-		openProductLandingSinglePopup();
-	});
+  // Open All Product popup
+  $(".link-all-products").click(function () {
+    openProductLandingPopup();
+  });
 
-	// Close Single Product popup from landing popup
-	$(".products__single .back-link").click(function () {
-		closeProductLandingSinglePopup();
-	});
+  // Close All Product popup
+  $(".products__landing .back-link").click(function () {
+    closeProductLandingPopup();
+  });
 
-	// Open Single Product popup from stacked imgs
-	$(".products__wrapper-stacked").click(function () {
-		openProductSinglePopup();
-	});
+  // Open Single Product popup from landing popup
+  $(".open-landing-product").click(function () {
+    openProductLandingSinglePopup();
+  });
 
-	// Close Single Product popup from stacked imgs
-	$(".products__single .back-link").click(function () {
-		closeProductSinglePopup();
-		openProductLandingPopup();
-	});
+  // Close Single Product popup from landing popup
+  $(".products__single .back-link").click(function () {
+    closeProductLandingSinglePopup();
+  });
 
-	// Open Searchbar
-	$(".search-icon").click(function () {
-		openSearchBar();
-	});
+  // Open Single Product popup from stacked imgs
+  $(".products__wrapper-stacked").click(function () {
+    openProductSinglePopup();
+  });
 
-	// Close Searchbar
-	$(".btn-search-close").click(function () {
-		closeSearchBar();
-		$(".search-input").val("");
-	});
+  // Close Single Product popup from stacked imgs
+  $(".products__single .back-link").click(function () {
+    closeProductSinglePopup();
+    openProductLandingPopup();
+  });
 
-	// Quantity Input
-	var QtyInput = (function () {
-		var $qtyInputs = $(".qty-input");
+  // Open Searchbar
+  $(".search-icon").click(function () {
+    openSearchBar();
+  });
 
-		if (!$qtyInputs.length) {
-			return;
-		}
+  // Close Searchbar
+  $(".btn-search-close").click(function () {
+    closeSearchBar();
+    $(".search-input").val("");
+  });
 
-		var $inputs = $qtyInputs.find(".product-qty");
-		var $countBtn = $qtyInputs.find(".qty-count");
-		var qtyMin = parseInt($inputs.attr("min"));
-		var qtyMax = parseInt($inputs.attr("max"));
+  // Quantity Input
+  var QtyInput = (function () {
+    var $qtyInputs = $(".qty-input");
 
-		$inputs.change(function () {
-			var $this = $(this);
-			var $minusBtn = $this.siblings(".qty-count--minus");
-			var $addBtn = $this.siblings(".qty-count--add");
-			var qty = parseInt($this.val());
+    if (!$qtyInputs.length) {
+      return;
+    }
 
-			if (isNaN(qty) || qty <= qtyMin) {
-				$this.val(qtyMin);
-				$minusBtn.attr("disabled", true);
-			} else {
-				$minusBtn.attr("disabled", false);
+    var $inputs = $qtyInputs.find(".product-qty");
+    var $countBtn = $qtyInputs.find(".qty-count");
+    var qtyMin = parseInt($inputs.attr("min"));
+    var qtyMax = parseInt($inputs.attr("max"));
 
-				if (qty >= qtyMax) {
-					$this.val(qtyMax);
-					$addBtn.attr("disabled", true);
-				} else {
-					$this.val(qty);
-					$addBtn.attr("disabled", false);
-				}
-			}
-		});
+    $inputs.change(function () {
+      var $this = $(this);
+      var $minusBtn = $this.siblings(".qty-count--minus");
+      var $addBtn = $this.siblings(".qty-count--add");
+      var qty = parseInt($this.val());
 
-		$countBtn.click(function () {
-			var operator = this.dataset.action;
-			var $this = $(this);
-			var $input = $this.siblings(".product-qty");
-			var qty = parseInt($input.val());
+      if (isNaN(qty) || qty <= qtyMin) {
+        $this.val(qtyMin);
+        $minusBtn.attr("disabled", true);
+      } else {
+        $minusBtn.attr("disabled", false);
 
-			if (operator == "add") {
-				qty += 1;
-				if (qty >= qtyMin + 1) {
-					$this.siblings(".qty-count--minus").attr("disabled", false);
-				}
+        if (qty >= qtyMax) {
+          $this.val(qtyMax);
+          $addBtn.attr("disabled", true);
+        } else {
+          $this.val(qty);
+          $addBtn.attr("disabled", false);
+        }
+      }
+    });
 
-				if (qty >= qtyMax) {
-					$this.attr("disabled", true);
-				}
-			} else {
-				qty = qty <= qtyMin ? qtyMin : (qty -= 1);
+    $countBtn.click(function () {
+      var operator = this.dataset.action;
+      var $this = $(this);
+      var $input = $this.siblings(".product-qty");
+      var qty = parseInt($input.val());
 
-				if (qty == qtyMin) {
-					$this.attr("disabled", true);
-				}
+      if (operator == "add") {
+        qty += 1;
+        if (qty >= qtyMin + 1) {
+          $this.siblings(".qty-count--minus").attr("disabled", false);
+        }
 
-				if (qty < qtyMax) {
-					$this.siblings(".qty-count--add").attr("disabled", false);
-				}
-			}
+        if (qty >= qtyMax) {
+          $this.attr("disabled", true);
+        }
+      } else {
+        qty = qty <= qtyMin ? qtyMin : (qty -= 1);
 
-			$input.val(qty);
-		});
-	})();
+        if (qty == qtyMin) {
+          $this.attr("disabled", true);
+        }
+
+        if (qty < qtyMax) {
+          $this.siblings(".qty-count--add").attr("disabled", false);
+        }
+      }
+
+      $input.val(qty);
+    });
+  })();
+
+  function closeStoryPopup() {
+    $(".story-popup").fadeOut(300);
+
+    const videos = document.querySelectorAll(".story__slide video");
+    videos.forEach((video) => {
+      video.currentTime = lastVideoTime;
+      video.play();
+    });
+
+    if (slider) {
+      lastSlideIndex = slider.activeIndex;
+      slider.slideTo(lastSlideIndex);
+      slider.autoplay.start();
+    }
+
+    $(".story__modal").removeClass("full-height-popup");
+
+    $(".story__prev").removeClass("active-popup");
+    $(".story__next").removeClass("active-popup");
+  }
+
+  // Open popup
+  $(".open-popup").on("click", function (e) {
+    e.preventDefault();
+
+    if ($(this).hasClass("open-popup-h-full")) {
+      $(".story__modal").addClass("full-height-popup");
+    } else {
+      $(".story__modal").removeClass("full-height-popup");
+    }
+
+    $(".story-popup").fadeIn(300);
+
+    if (slider && slider.autoplay) {
+      slider.autoplay.stop();
+    }
+
+    const videos = document.querySelectorAll(".story__slide video");
+    videos.forEach((video, index) => {
+      if (!video.paused) {
+        lastVideoTime = video.currentTime;
+      }
+      video.pause();
+      video.currentTime = lastVideoTime;
+    });
+
+    $(".story__prev").addClass("active-popup");
+    $(".story__next").addClass("active-popup");
+  });
+
+  // Close popup
+  $(".story-popup__close").on("click", function () {
+    closeStoryPopup();
+  });
 });

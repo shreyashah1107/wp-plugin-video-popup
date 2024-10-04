@@ -1,0 +1,55 @@
+.story-popup {
+  display: none;
+  position: absolute;
+  bottom: 9px;
+  left: 0;
+  right: 0;
+  max-width: 100%;
+  background: rgba(0, 0, 0, .5);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  z-index: 5;
+
+  &.h-full {
+    top: 0;
+  }
+
+  &__body {
+    padding: 10px 0;
+
+    p {
+      margin: 0;
+      font-size: 12px;
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h3 {
+      font-size: 18px;
+      margin: 0;
+    }
+  }
+
+  &__close {
+    background: rgba(0, 0, 0, .5);
+    border: none;
+    color: #fff;
+    padding: 5px 15px;
+    font-size: 18px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: .3s ease-in;
+
+    &:hover {
+      background-color: #fff;
+      color: #000;
+    }
+  }
+}
