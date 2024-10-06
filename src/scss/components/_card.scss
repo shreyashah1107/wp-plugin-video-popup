@@ -25,7 +25,7 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-    gap: 10px;
+		gap: 10px;
 		padding: 20px;
 	}
 
@@ -41,15 +41,15 @@
 
 		.product-price {
 			display: flex;
-      align-items: center;
-      gap: 10px;
+			align-items: center;
+			gap: 10px;
 			font-size: 20px;
 
-      .original-price {
-        text-decoration: line-through;
-        color: var(--white-50);
-        font-size: 14px;
-      }
+			.original-price {
+				text-decoration: line-through;
+				color: var(--white-50);
+				font-size: 14px;
+			}
 		}
 	}
 
