@@ -489,6 +489,10 @@
 
             <!-- Start: Slider -->
             <div class="story__modal modal-dialog modal-lg">
+                <!-- Navigation Arrows -->
+                <div class="story__next swiper-button-next"></div>
+                <div class="story__prev swiper-button-prev"></div>
+
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
@@ -600,12 +604,36 @@
                                     <!-- Slide 3 -->
                                     <div class="story__slide swiper-slide">
                                         <img src="https://picsum.photos/450/810" />
+
+                                        <!-- Btn to toggle product popup -->
+                                        <div class="story__product-popup-cta active">
+                                            <i class="fa-solid fa-chevron-up"></i>
+                                        </div>
+
+                                        <!-- Product popup -->
+                                        <div class="story__product-popup active">
+                                            <div class="story__product-card">
+                                                <div class="story__product-card-img">
+                                                    <div class="image">
+                                                        <img src="https://picsum.photos/450/900" alt="Product Image" />
+                                                    </div>
+                                                </div>
+                                                <div class="story__product-card-body">
+                                                    <div class="story__product-card-content">
+                                                        <div class="product-title">Product title</div>
+                                                        <div class="product-price">
+                                                            <div class="original-price">$20.00</div>
+                                                            <div class="offered-price">$11.00</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="story__product-card-cta">
+                                                        <a href="#" title="Shop">Shop</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                
-                                <!-- Navigation Arrows -->
-                                <div class="story__next swiper-button-next"></div>
-                                <div class="story__prev swiper-button-prev"></div>
 
                                 <!-- Progress pagination -->
                                 <div class="story__pagination swiper-pagination"></div>

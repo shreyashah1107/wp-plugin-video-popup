@@ -131,28 +131,28 @@
 }
 
 // < 992px
-@include media-breakpoint-down(lg) {
-  .video-bubble__modal {
-    .modal-cta {
-      .cta {
-        &--left,
-        &--right,
-        &--bottom {
-          top: 75px;
-          bottom: auto;
-          left: auto;
-          right: 10px;
-        }
+// @include media-breakpoint-down(lg) {
+//   .video-bubble__modal {
+//     .modal-cta {
+//       .cta {
+//         &--left,
+//         &--right,
+//         &--bottom {
+//           top: 75px;
+//           bottom: auto;
+//           left: auto;
+//           right: 10px;
+//         }
 
-        &--bottom {
-          .btn-wrapper {
-            flex-direction: column;
-          }
-        }
-      }
-    }
-  }
-}
+//         &--bottom {
+//           .btn-wrapper {
+//             flex-direction: column;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
 
 // < 576px
 @include media-breakpoint-down(sm) {

@@ -88,6 +88,9 @@ $(document).ready(function () {
     $(".story__modal").removeClass("full-height-popup");
     $(".story__prev").removeClass("active-popup");
     $(".story__next").removeClass("active-popup");
+
+    $('.story__product-popup-cta').addClass("active");
+    $('.story__product-popup').addClass('active');
     closeStoryPopup();
   });
 
@@ -292,5 +295,11 @@ $(document).ready(function () {
   // Close popup
   $(".story-popup__close").on("click", function () {
     closeStoryPopup();
+  });
+
+  // Story slider - Product popup
+  $('.story__product-popup-cta').on('click', function() {
+    $(this).toggleClass('active');
+    $(this).next('.story__product-popup').toggleClass('active');
   });
 });
