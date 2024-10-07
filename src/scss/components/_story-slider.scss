@@ -1,4 +1,7 @@
 .story {
+	border-radius: 12px;
+	overflow: hidden;
+
 	&__slider {
 		position: relative;
 
@@ -57,8 +60,10 @@
 	&__next,
 	&__next.swiper-button-next,
 	&__prev.swiper-button-prev {
-		top: 50%;
-		transform: translateY(-50%);
+		left: 10px;
+		right: auto;
+		// top: 50%;
+		// transform: translateY(-50%);
 		display: flex;
     align-items: center;
     justify-content: center;
@@ -68,12 +73,14 @@
     border-radius: 50%;
     background-color: var(--white);
     color: var(--font-color);
-		z-index: 2;
+		z-index: 3;
 		pointer-events: auto;
     transition: all .3s ease-in;
 
 		&::after {
 			font-size: 16px;
+			font-family: "Font Awesome 6 Free";
+			font-weight: 900;
 		}
 
     &:not(.swiper-button-disabled):hover {
@@ -89,19 +96,29 @@
 
 	&__prev,
 	&__prev.swiper-button-prev {
-    left: -50px;
+		top: 40px;
+    // left: -50px;
+
+		&::after {
+			content: "\f077";
+		}
 	}
 
 	&__next,
 	&__next.swiper-button-next {
-		right: -50px;
+		top: 90px;
+		// right: -50px;
+
+		&::after {
+			content: "\f078";
+		}
 	}
 
 	&__product-popup {
 		position: absolute;
 		left: 0;
 		right: 0;
-		bottom: 9px;
+		bottom: 0;
 		border-radius: 8px;
 		background: rgba(0, 0, 0, 0.5);
 		backdrop-filter: blur(10px);
@@ -121,9 +138,9 @@
 		&-cta {
 			position: absolute;
 			left: 10px;
-			bottom: 20px;
-			width: 25px;
-			height: 25px;
+			bottom: 10px;
+			width: 40px;
+			height: 40px;
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -131,7 +148,6 @@
 			backdrop-filter: blur(10px);
 			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 			color: var(--white);
-			padding: 10px;
 			border-radius: 50%;
 			font-size: 18px;
 			transition: 0.3s ease-out;
@@ -143,7 +159,7 @@
 			}
 
 			&.active {
-				bottom: 170px;
+				bottom: 120px;
 				transition: 0.3s ease-out;
 				transform: rotate(180deg);
 			}
@@ -167,25 +183,30 @@
 @include media-breakpoint-down(sm) {
 	.story {
 		height: 100%;
+		border-radius: 0;
 
 		&__slider {
 			height: 100%;
 
-			&::after {
-				content: '';
-				position: absolute;
-				bottom: 0;
-				top: 0;
-				left: 0;
-				right: 0;
-				background: rgb(0, 0, 0);
-				background: linear-gradient(
-					180deg,
-					rgba(255, 255, 255, 0) 0%,
-					rgba(0, 0, 0, 0.7) 100%
-				);
-				z-index: 2;
-			}
+			// &::after {
+			// 	content: '';
+			// 	position: absolute;
+			// 	bottom: 0;
+			// 	top: 0;
+			// 	left: 0;
+			// 	right: 0;
+			// 	background: rgb(0, 0, 0);
+			// 	background: linear-gradient(
+			// 		180deg,
+			// 		rgba(255, 255, 255, 0) 0%,
+			// 		rgba(0, 0, 0, 0.7) 100%
+			// 	);
+			// 	z-index: 2;
+			// }
+		}
+
+		&__product-popup {
+			border-radius: 0;
 		}
 	}
 }

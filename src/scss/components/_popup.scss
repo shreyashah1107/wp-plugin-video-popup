@@ -1,7 +1,7 @@
 .story-popup {
   display: none;
   position: absolute;
-  bottom: 9px;
+  bottom: 0;
   left: 0;
   right: 0;
   max-width: 100%;
@@ -50,6 +50,18 @@
     &:hover {
       background-color: #fff;
       color: #000;
+    }
+  }
+}
+
+// < 576px
+@include media-breakpoint-down(sm) {
+  .story-popup {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
+    &.h-full {
+      border-radius: 0;
     }
   }
 }
