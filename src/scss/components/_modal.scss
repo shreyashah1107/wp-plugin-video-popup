@@ -77,12 +77,26 @@
   }
 
   .modal-cta {
-    .cta {
-      position: absolute;
-      background: none;
-      transition: 0.3s ease-out;
-      z-index: 1;
+    position: absolute;
+    background: none;
+    transition: 0.3s ease-out;
+    z-index: 1;
 
+    &.active {
+      &.modal-cta--left {
+        bottom: 180px;
+      }
+
+      &.modal-cta--right {
+        bottom: 130px;
+      }
+
+      &.modal-cta--bottom {
+        display: none;
+      }
+    }
+
+    .cta {
       .btn-wrapper {
         display: flex;
         flex-direction: column;
@@ -112,63 +126,30 @@
           }
         }
       }
+    }
 
-      &--left {
-        left: 10px;
-        bottom: 20px;
-      }
+    &--left {
+      left: 10px;
+      bottom: 80px;
+    }
 
-      &--bottom {
-        right: 10px;
-        bottom: 20px;
+    &--right {
+      right: 10px;
+      bottom: 80px;
+    }
 
+    &--bottom {
+      right: 10px;
+      bottom: 20px;
+
+      .cta {
         .btn-wrapper {
           flex-direction: row;
-        }
-      }
-
-      &--right {
-        right: 10px;
-        bottom: 80px;
-      }
-
-      &.active {
-        &.cta--left,
-        &.cta--right {
-          bottom: 130px;
-        }
-
-        &.cta--bottom {
-          display: none;
         }
       }
     }
   }
 }
-
-// < 992px
-// @include media-breakpoint-down(lg) {
-//   .video-bubble__modal {
-//     .modal-cta {
-//       .cta {
-//         &--left,
-//         &--right,
-//         &--bottom {
-//           top: 75px;
-//           bottom: auto;
-//           left: auto;
-//           right: 10px;
-//         }
-
-//         &--bottom {
-//           .btn-wrapper {
-//             flex-direction: column;
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
 
 // < 576px
 @include media-breakpoint-down(sm) {

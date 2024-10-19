@@ -486,7 +486,7 @@
                 </div>
             </div>
             <!-- Product Single -->
-
+             
             <!-- Start: Slider -->
             <div class="story__modal modal-dialog modal-lg">
                 <div class="modal-content">
@@ -509,37 +509,6 @@
                                         <video poster="https://storage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerBlazes.jpg" autoplay muted>
                                             <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
                                         </video>
-
-                                        <!-- <div class="modal-cta"> -->
-                                            <!-- If buttons are on bottom -->
-                                            <!-- <div class="cta cta--bottom">
-                                                <div class="btn-wrapper">
-                                                    <a href="#" class="open-popup" title="Open Popup">
-                                                        <i class="fa-solid fa-eye"></i>
-                                                    </a>
-                                                    <a href="#" title="Like">
-                                                        <i class="fa-regular fa-heart"></i>
-                                                    </a>
-                                                    <a href="#" title="Share">
-                                                        <i class="fa-brands fa-whatsapp"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div> -->
-
-                                        <!-- Popup -->
-                                        <!-- <div class="story-popup">
-                                            <div class="story-popup__content">
-                                                <div class="story-popup__header">
-                                                    <h3>Popup title 2</h3>
-                                                    <button class="story-popup__close">&times;</button>
-                                                </div>
-                                                <div class="story-popup__body">
-                                                    <p>This is a test</p>
-                                                </div>
-                                            </div>
-                                        </div> -->
-                                        <!-- Popup -->
                                     </div>
 
                                     <!-- Slide 3 -->
@@ -557,36 +526,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="modal-cta">
-                        <!-- If buttons are on left side -->
-                        <!-- <div class="cta cta--left">
-                            <div class="btn-wrapper">
-                                <a href="#" title="Like">
-                                    <i class="fa-regular fa-heart"></i>
-                                </a>
-                                <a href="#" title="Share">
-                                    <i class="fa-brands fa-whatsapp"></i>
-                                </a>
-                            </div>
-                        </div> -->
 
-                        <!-- If buttons are on bottom -->
-                        <!-- <div class="cta cta--bottom">
-                            <div class="btn-wrapper">
-                                <a href="#" class="open-popup open-popup-h-full" title="Open Popup">
-                                    <i class="fa-solid fa-eye"></i>
-                                </a>
-                                <a href="#" title="Like">
-                                    <i class="fa-regular fa-heart"></i>
-                                </a>
-                                <a href="#" title="Share">
-                                    <i class="fa-brands fa-whatsapp"></i>
-                                </a>
-                            </div>
-                        </div> -->
-
-                        <!-- If buttons are on right side -->
-                        <div class="cta cta--right active">
+                    <!-- Position classes for cta: modal-cta--left/modal-cta--right/modal-cta--bottom -->
+                    <!-- Add/remove active class based on the product popup visibility -->
+                    <div class="modal-cta modal-cta--left active">
+                        <div class="cta">
                             <div class="btn-wrapper">
                                 <a href="#" class="open-popup open-popup-h-full" title="Open Popup">
                                     <i class="fa-solid fa-eye"></i>
@@ -601,8 +545,37 @@
                         </div>
                     </div>
 
-                    <!-- Full height Popup -->
-                    <div class="story-popup h-full">
+                    <div class="modal-cta modal-cta--right active">
+                        <div class="cta">
+                            <div class="btn-wrapper">
+                                <a href="#" class="open-popup" title="Open Popup">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+                                <a href="#" title="Like">
+                                    <i class="fa-regular fa-heart"></i>
+                                </a>
+                                <a href="#" title="Share">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-cta modal-cta--bottom active">
+                        <div class="cta">
+                            <div class="btn-wrapper">
+                                <a href="#" title="Like">
+                                    <i class="fa-regular fa-heart"></i>
+                                </a>
+                                <a href="#" title="Share">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Info Popup : Auto height -->
+                    <div class="story-popup">
                         <div class="story-popup__content">
                             <div class="story-popup__header">
                                 <h3>Popup title</h3>
@@ -613,31 +586,49 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Full height Popup -->
+                    <!-- Info Popup : Auto height -->
 
-                    <!-- Btn to toggle product popup -->
-                    <div class="story__product-popup-cta active">
-                        <i class="fa-solid fa-chevron-up"></i>
-                    </div>
-
-                    <!-- Product popup -->
-                    <div class="story__product-popup active">
-                        <div class="story__product-card">
-                            <div class="story__product-card-img">
-                                <div class="image">
-                                    <img src="https://picsum.photos/450/900" alt="Product Image" />
-                                </div>
+                    <!-- Info Popup : Full height -->
+                    <!-- <div class="story-popup h-full">
+                        <div class="story-popup__content">
+                            <div class="story-popup__header">
+                                <h3>Popup title</h3>
+                                <button class="story-popup__close">&times;</button>
                             </div>
-                            <div class="story__product-card-body">
-                                <div class="story__product-card-content">
-                                    <div class="product-title">Product title</div>
-                                    <div class="product-price">
-                                        <div class="original-price">$20.00</div>
-                                        <div class="offered-price">$11.00</div>
+                            <div class="story-popup__body">
+                                <p>This is a test</p>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- Info Popup : Full height -->
+
+                    <!-- Product popup wrapper -->
+                    <!-- Toggle active class for visibility -->
+                    <div class="story__product-popup-wrapper active">
+                        <!-- Product popup toggle btn -->
+                        <div class="story__product-popup-cta">
+                            <i class="fa-solid fa-chevron-up"></i>
+                        </div>
+
+                        <!-- Product popup content -->
+                        <div class="story__product-popup">
+                            <div class="story__product-card">
+                                <div class="story__product-card-img">
+                                    <div class="image">
+                                        <img src="https://picsum.photos/450/900" alt="Product Image" />
                                     </div>
                                 </div>
-                                <div class="story__product-card-cta">
-                                    <a href="#" title="Shop">Shop</a>
+                                <div class="story__product-card-body">
+                                    <div class="story__product-card-content">
+                                        <div class="product-title">Product title</div>
+                                        <div class="product-price">
+                                            <div class="original-price">$20.00</div>
+                                            <div class="offered-price">$11.00</div>
+                                        </div>
+                                    </div>
+                                    <div class="story__product-card-cta">
+                                        <a href="#" title="Shop">Shop</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

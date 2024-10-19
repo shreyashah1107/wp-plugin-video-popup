@@ -89,8 +89,7 @@ $(document).ready(function () {
     $(".story__prev").removeClass("active-popup");
     $(".story__next").removeClass("active-popup");
 
-    $(".story__product-popup-cta").addClass("active");
-    $(".story__product-popup").addClass("active");
+    $(".story__product-popup-wrapper").addClass("active");
 
     closeStoryPopup();
   });
@@ -300,14 +299,13 @@ $(document).ready(function () {
 
   // Story slider - Product popup
   $(".story__product-popup-cta").on("click", function () {
-    $(this).toggleClass("active");
-    $(this).next(".story__product-popup").toggleClass("active");
+    $(this).parent(".story__product-popup-wrapper").toggleClass("active");
 
     // Add active class to cta elements when the product popup is active
-    if ($(this).next(".story__product-popup").hasClass("active")) {
-      $(".story__modal .modal-cta .cta").addClass("active");
+    if ($(".story__product-popup-wrapper").hasClass("active")) {
+      $(".story__modal .modal-cta").addClass("active");
     } else {
-      $(".story__modal .modal-cta .cta").removeClass("active");
+      $(".story__modal .modal-cta").removeClass("active");
     }
   });
 });
