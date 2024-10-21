@@ -304,8 +304,10 @@ $(document).ready(function () {
     // Add active class to cta elements when the product popup is active
     if ($(".story__product-popup-wrapper").hasClass("active")) {
       $(".story__modal .modal-cta").addClass("active");
+      $(".story__modal .story-popup-cta").addClass("active");
     } else {
       $(".story__modal .modal-cta").removeClass("active");
+      $(".story__modal .story-popup-cta").removeClass("active");
     }
   });
 });

@@ -76,27 +76,33 @@
     }
   }
 
-  .modal-cta {
+  .modal-cta,
+  .story-popup-cta {
     position: absolute;
     background: none;
     transition: 0.3s ease-out;
     z-index: 1;
 
     &.active {
-      &.modal-cta--left {
+      &.modal-cta--left,
+      &.story-popup-cta--left {
         bottom: 180px;
       }
 
-      &.modal-cta--right {
+      &.modal-cta--right,
+      &.story-popup-cta--right {
         bottom: 130px;
       }
 
-      &.modal-cta--bottom {
+      &.modal-cta--bottom,
+      &.story-popup-cta--bottom {
         display: none;
       }
     }
 
     .cta {
+      background: none;
+
       .btn-wrapper {
         display: flex;
         flex-direction: column;
